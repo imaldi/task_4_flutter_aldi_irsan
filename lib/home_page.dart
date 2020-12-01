@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'main.dart';
 
 class HomePage extends StatelessWidget{
   final String username;
@@ -12,7 +11,7 @@ class HomePage extends StatelessWidget{
     return Scaffold(
       appBar: AppBar(
         title: Center(
-          child: Text('Covid 19 News'),
+          child: Text('Home Screen'),
         ),
       ),
       body: Center(

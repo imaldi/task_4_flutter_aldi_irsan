@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'Login App'),
     );
   }
 }
@@ -56,12 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               TextFormField(
                 controller: usernameController,
-                validator: (String value) {
-                  if (value.isEmpty) {
-                    return "Email Harus Diisi";
-                  }
-                  return null;
-                },
+                // validator: (String value) {
+                //   if (value.isEmpty) {
+                //     return "Email Harus Diisi";
+                //   }
+                //   return null;
+                // },
                 decoration: InputDecoration(
                   hintText: "Email",
                   border: OutlineInputBorder(
@@ -73,12 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
               TextFormField(
                 controller: passwordController,
-                validator: (String value) {
-                  if (value.isEmpty) {
-                    return "Password tidak boleh kosong";
-                  }
-                  return null;
-                },
+                // validator: (String value) {
+                //   if (value.isEmpty) {
+                //     return "Password tidak boleh kosong";
+                //   }
+                //   return null;
+                // },
                 decoration: InputDecoration(
                   hintText: "Password",
                   border: OutlineInputBorder(
@@ -96,6 +96,36 @@ class _MyHomePageState extends State<MyHomePage> {
                     if(usernameController.text == "admin" && passwordController.text == "admin"){
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => HomePage(username : usernameController.text, password : passwordController.text))
+                      );
+                    } else if(usernameController.text == ""){
+                      Fluttertoast.showToast(
+                          msg: "Username harus diisi",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIos: 1,
+                          backgroundColor: Colors.green,
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );
+                    }else if(passwordController.text == ""){
+                      Fluttertoast.showToast(
+                          msg: "Password harus diisi",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIos: 1,
+                          backgroundColor: Colors.green,
+                          textColor: Colors.white,
+                          fontSize: 16.0
+                      );
+                    } else if(passwordController.text.length < 5){
+                      Fluttertoast.showToast(
+                          msg: "Password tidak boleh kurang dari 5",
+                          toastLength: Toast.LENGTH_SHORT,
+                          gravity: ToastGravity.CENTER,
+                          timeInSecForIos: 1,
+                          backgroundColor: Colors.green,
+                          textColor: Colors.white,
+                          fontSize: 16.0
                       );
                     } else {
                       Fluttertoast.showToast(
